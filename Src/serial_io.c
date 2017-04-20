@@ -14,7 +14,7 @@ extern UART_HandleTypeDef huart2;
 
 static void rawSendChar(char c)
 {
-    HAL_UART_Transmit(&huart2, &c, 1, 1000);
+    HAL_UART_Transmit(&huart2, (uint8_t*)&c, 1, 1000);
 }
 
 static void sendCharAndChecksum(char c)
@@ -68,7 +68,7 @@ static void sendChar(char c)
             checksum = 0;
             // Send a dummy line number
             sendCharAndChecksum('N');
-            sendInt(lineNumber++);			// numChars is no longer zero, so only recurses once
+            sendInt(lineNumber++);            // numChars is no longer zero, so only recurses once
             sendCharAndChecksum(' ');
         }
         sendCharAndChecksum(c);

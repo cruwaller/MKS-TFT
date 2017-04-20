@@ -38,3 +38,4 @@
 *.depend
 *.elay
 .settings
+output
